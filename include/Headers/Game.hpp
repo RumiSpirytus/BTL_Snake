@@ -7,15 +7,14 @@ using namespace std;
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
-#include "Texture.hpp"
 #include "Snake.hpp"
-
+#include "Object.hpp"
 class Game
 {
 private:
     bool isRunning = true;
     SDL_Window *gWindow = NULL;
-    LTexture l;
+    Object background;
     Snake s;
 
 public:

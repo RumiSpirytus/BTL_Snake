@@ -1,6 +1,7 @@
 #pragma once
-#include "Texture.hpp"
+#include "Object.hpp"
 #include <Utility>
+#include <vector>
 class Snake
 {
 public:
@@ -12,8 +13,5 @@ public:
     void DrawSnake();
 
 private:
-    LTexture snake;
-    SDL_Rect snake_clip;
-    std::pair<int, int> snake_pos;
-    std::pair<int, int> velocity;
+    std::vector<Object> list_snake;
 };

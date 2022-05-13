@@ -75,14 +75,9 @@ bool Game::init()
 bool Game::loadMedia()
 {
     bool success = true;
-    if (!l.loadFromFile("./Images/map3.jpg"))
-    {
-        success = false;
-    }
-    if (!s.Loadmedia())
-    {
-        success = false;
-    }
+    background.loadMedia(BACKGROUND_PATH);
+    background.setRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    s.Loadmedia();
     return success;
 }
 
@@ -98,18 +93,15 @@ void Game::handleEvents()
         {
             isRunning = false;
         }
-        s.HandleInputAction(e);
     }
 }
 void Game::update()
 {
-    s.Update();
 }
 
 void Game::render()
 {
-
-    l.render(0, 0);
+    background.draw();
     s.DrawSnake();
     SDL_RenderPresent(gRenderer);
 }
