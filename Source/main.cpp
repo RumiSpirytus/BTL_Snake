@@ -24,7 +24,7 @@ int main(int argc, char *args[])
                 game->handleEvents();
                 game->update();
                 game->render();
-                SDL_Delay(40);
+                SDL_Delay(50);
             }
         }
     }

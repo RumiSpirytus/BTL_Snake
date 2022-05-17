@@ -11,6 +11,7 @@ private:
 public:
     Object();
     ~Object();
+    void spawn();
     void loadMedia(std::string path);
     void setPosition(int u, int v)
     {
@@ -23,6 +24,10 @@ public:
     SDL_Rect getRect()
     {
         return {pos.first, pos.second, clip.w, clip.h};
+    }
+    std::pair<int, int> getPosition()
+    {
+        return pos;
     }
     void draw()
     {

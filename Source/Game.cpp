@@ -93,10 +93,12 @@ void Game::handleEvents()
         {
             isRunning = false;
         }
+        s.HandleInputAction(e);
     }
 }
 void Game::update()
 {
+    s.Update();
 }
 
 void Game::render()
