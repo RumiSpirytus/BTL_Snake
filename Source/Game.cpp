@@ -107,6 +107,9 @@ void Game::render()
     s.DrawSnake();
     SDL_RenderPresent(gRenderer);
 }
+void Game::gameOver()
+{
+}
 
 void Game::close()
 {

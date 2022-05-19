@@ -23,7 +23,7 @@ public:
 
     bool init();
     bool loadMedia();
-
+    void gameOver();
     void handleEvents();
     void update();
     void render();
