@@ -56,7 +56,7 @@ void Snake::HandleInputAction(SDL_Event event)
     }
 }
 
-void Snake::Update()
+void Snake::Update(int &score, bool &isdead)
 {
     for (int i = list_snake.size() - 1; i > 0; i--)
     {
@@ -102,7 +102,16 @@ void Snake::Update()
     if (checkColisionSnakeWithApple())
     {
         a.genarateApple();
+        if (w.checkCollisionWithWall(a.getApple().first, a.getApple().second))
+        {
+            a.genarateApple();
+        }
         growSnake();
+        score++;
+    }
+    if (w.checkCollisionWithWall(list_snake[0]->getPosition().first, list_snake[0]->getPosition().second))
+    {
+        isdead = true;
     }
 }
 

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 class LTexture
 {
 public:
@@ -15,10 +16,8 @@ public:
     // Loads image at specified path
     bool loadFromFile(std::string path);
 
-#if defined(SDL_TTF_MAJOR_VERSION)
     // Creates image from font string
-    bool loadFromRenderText(string textureText, SDL_Color textColor);
-#endif
+    bool loadFromRenderText(std::string textureText, SDL_Color textColor);
 
     // Deallocates texture
     void free();
@@ -45,6 +44,7 @@ private:
     // Image dimensions
     int mWidth;
     int mHeight;
+    TTF_Font *gFont = NULL;
 };
 
 #endif /* Texture_hpp */

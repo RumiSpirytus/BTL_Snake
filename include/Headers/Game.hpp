@@ -16,6 +16,10 @@ private:
     SDL_Window *gWindow = NULL;
     Object background;
     Snake s;
+    LTexture gTextTexture;
+    int score;
+    bool isDead;
+    Object gameover;
 
 public:
     Game();
@@ -34,6 +38,6 @@ public:
     void close();
 
     bool getGameState() { return isRunning; }
-
     static SDL_Renderer *gRenderer;
+    static TTF_Font *gFont;
 };

@@ -8,3 +8,5 @@
 #define WALL2_IMAGE_PATH "./Images/wall2.png"
 #define WALL3_IMAGE_PATH "./Images/wall3.png"
 #define WALL4_IMAGE_PATH "./Images/wall4.png"
+#define GAMEOVER_IMAGE_PATH "./Images/GameOver.png"
+#define MENU_IMAGE_PATH "./Images/Menu.png"

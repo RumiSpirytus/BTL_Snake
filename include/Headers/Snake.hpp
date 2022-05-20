@@ -19,7 +19,7 @@ public:
     ~Snake();
     bool Loadmedia();
     void HandleInputAction(SDL_Event event);
-    void Update();
+    void Update(int &score, bool &isdead);
     void DrawSnake();
     void growSnake();
     bool checkColisionSnakeWithApple()

@@ -1,8 +1,12 @@
 #include "Game.hpp"
 #include "Defs.hpp"
 SDL_Renderer *Game::gRenderer = nullptr;
-
-Game::Game() {}
+TTF_Font *Game::gFont = nullptr;
+Game::Game()
+{
+    score = 0;
+    isDead = false;
+}
 Game::~Game() {}
 
 bool Game::init()
@@ -77,7 +81,10 @@ bool Game::loadMedia()
     bool success = true;
     background.loadMedia(BACKGROUND_PATH);
     background.setRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    gameover.loadMedia(GAMEOVER_IMAGE_PATH);
+    gameover.setRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     s.Loadmedia();
+    gFont = TTF_OpenFont("./Images/Caviar_Dreams_Bold.ttf", 28);
     return success;
 }
 
@@ -98,17 +105,26 @@ void Game::handleEvents()
 }
 void Game::update()
 {
-    s.Update();
+    s.Update(score, isDead);
 }
 
 void Game::render()
 {
-    background.draw();
-    s.DrawSnake();
+    SDL_RenderClear(gRenderer);
+    if (!isDead)
+    {
+        background.draw();
+        s.DrawSnake();
+        // Render text
+        SDL_Color textColor = {0, 0, 0};
+        gTextTexture.loadFromRenderText("Score: " + to_string(score), textColor);
+        gTextTexture.render((SCREEN_WIDTH - gTextTexture.getWidth()) / 2, (SCREEN_HEIGHT - gTextTexture.getHeight()) / 2);
+    }
+    else
+    {
+        gameover.draw();
+    }
     SDL_RenderPresent(gRenderer);
-}
-void Game::gameOver()
-{
 }
 
 void Game::close()
