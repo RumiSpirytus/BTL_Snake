@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Menu.hpp"
 #include <bits/stdc++.h>
 using namespace std;
 // Using SDL, SDL_image, standard IO, and strings
@@ -20,6 +20,7 @@ private:
     int score;
     bool isDead;
     Object gameover;
+    Menu me;
 
 public:
     Game();
@@ -40,4 +41,5 @@ public:
     bool getGameState() { return isRunning; }
     static SDL_Renderer *gRenderer;
     static TTF_Font *gFont;
+    static bool isDead;
 };

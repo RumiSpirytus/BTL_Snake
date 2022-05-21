@@ -4,11 +4,11 @@
 class Object
 {
 private:
-    LTexture ob_texture;
-    std::pair<int, int> pos;
+        std::pair<int, int> pos;
     SDL_Rect clip;
 
 public:
+    LTexture ob_texture;
     Object();
     ~Object();
     void spawn();

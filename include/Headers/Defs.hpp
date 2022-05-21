@@ -10,3 +10,4 @@
 #define WALL4_IMAGE_PATH "./Images/wall4.png"
 #define GAMEOVER_IMAGE_PATH "./Images/GameOver.png"
 #define MENU_IMAGE_PATH "./Images/Menu.png"
+#define TOTAL_MEMU_ITEMS = 3;

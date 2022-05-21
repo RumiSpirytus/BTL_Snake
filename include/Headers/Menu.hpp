@@ -1,7 +1,7 @@
 #pragma once
 #include "Object.hpp"
 #include "Defs.hpp"
-#
+#include <vector>
 class Menu
 {
 private:
@@ -10,17 +10,17 @@ private:
 
     // Menu state
     bool inMenu;
-
     enum
     {
-        NEW_GAME,
-        HIGH_SCORE,
-        EXIT_GAME,
+        NewGame,
+        HighScore,
+        Exit
     };
+    LTexture Button[3];
+    std::string NameButton[3] = {"New Game", "High Score", "Exit"};
+    std::vector<std::pair<int, int>> positem;
 
-    std::string Menuoption[3] = {"NEW GAME", "HIGH SCORE", "EXIT GAME"};
-
-    bool IsClicked[3] = {0};
+    bool Clicked[3] = {0};
 
     std::pair<int, int> mousep;
 
@@ -29,8 +29,9 @@ public:
     ~Menu();
 
     void LoadMenu();
-    void MenuHanddleEvent(SDL_Event &e, bool &running);
+    void MenuHandleEvent(SDL_Event &e, bool &isRunning);
     void MenuRender();
+    int ButtonFunction(bool Clicked[3]);
 
     bool MenuState();
 };
