@@ -2,9 +2,9 @@
 #include "Defs.hpp"
 SDL_Renderer *Game::gRenderer = nullptr;
 TTF_Font *Game::gFont = nullptr;
-bool Game::isDead = false;
 Game::Game()
 {
+    bool isDead = false;
     score = 0;
 }
 Game::~Game() {}
@@ -85,7 +85,7 @@ bool Game::loadMedia()
     gameover.setRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     s.Loadmedia();
     gFont = TTF_OpenFont("./Images/Caviar_Dreams_Bold.ttf", 28);
-    me.LoadMenu();
+    // me.LoadMenu();
     return success;
 }
 
@@ -101,10 +101,10 @@ void Game::handleEvents()
         {
             isRunning = false;
         }
-        else if (me.MenuState())
+        /*else if (me.MenuState())
         {
             me.MenuHandleEvent(e, isRunning);
-        }
+        }*/
         s.HandleInputAction(e);
     }
 }
@@ -124,11 +124,11 @@ void Game::render()
         SDL_Color textColor = {0, 0, 0};
         gTextTexture.loadFromRenderText("Score: " + to_string(score), textColor);
         gTextTexture.render((SCREEN_WIDTH - gTextTexture.getWidth()) / 2, (SCREEN_HEIGHT - gTextTexture.getHeight()) / 2);
-        me.MenuRender();
+        // me.MenuRender();
     }
     else
     {
-        me.MenuRender();
+        gameover.draw();
     }
     SDL_RenderPresent(gRenderer);
 }
